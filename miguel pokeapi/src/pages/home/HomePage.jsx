@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useHomePageLogic } from "./useHomePageLogic";
 
 const HomePage = () => {
-    const { status, error, loadItems, data,pokedata } = useHomePageLogic();
+    const { status, error, loadItems, data, pokedata } = useHomePageLogic();
 
     useEffect(() => {
         loadItems();
