@@ -4,7 +4,7 @@ const BASE_URL =
 
 export async function getAllItems() {
   try {
-    const response = await fetch(`${BASE_URL}/pokemon/?limit=20&offset=0`);
+    const response = await fetch(`${BASE_URL}/pokemon?limit=100000&offset=0`);
     if (!response.ok) {
       throw new Error(`Failed to fetch all items: ${response.statusText}`);
     }
