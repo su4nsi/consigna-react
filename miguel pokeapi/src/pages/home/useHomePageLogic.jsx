@@ -6,26 +6,26 @@ import {
   clearItems,
 } from "../../store/items/itemsSlice";
 export const useHomePageLogic = () => {
-
   const dispatch = useDispatch();
   const data = useSelector((state) => state.items.data);
   const status = useSelector((state) => state.items.status);
   const error = useSelector((state) => state.items.error);
   const [pokedata, setPokedata] = useState([]);
-  const [index, setIndex] = useState();
+  const [index, setIndex] = useState(0);
   console.log(index);
 
   useEffect(() => {
-    setPokedata(data);
+    if (Array.isArray(data) && data.length > 0) {
+      setPokedata(data);
+    }
   }, [data]);
 
   useEffect(() => {
     const numIndex = parseInt(localStorage.getItem("index"));
-    if (numIndex && numIndex >=0 ) {
+    if (numIndex && numIndex >= 0) {
       setIndex(numIndex);
-    }
-    else {
-      localStorage.setItem("index",0);
+    } else {
+      localStorage.setItem("index", 0);
       setIndex(0);
     }
   }, []);

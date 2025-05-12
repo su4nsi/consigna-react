@@ -1,20 +1,9 @@
 import { useEffect } from "react";
 
 const Pagination = (index, setIndex, total) => {
+  useEffect(() => {}, []);
 
-   
-
-    useEffect(() => {
-        
-    }, []);
-
-    return (
-        <div className="pagination-container">
-
-        </div>
-    );
+  return <div className="pagination-container"></div>;
 };
 
 export default Pagination;
-
-
