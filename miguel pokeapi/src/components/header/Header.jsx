@@ -1,20 +1,13 @@
-import logoImgHeader from "../../assets/logo.png";
 import "./Header.css";
-import Navigation from "../navigation/Navigation";
+import NavigationDesktop from "../navigation/desktop/NavigationDesktop";
+import NavigationResponsive from "../navigation/mobile/NavigationMobile";
+import { useHeaderLogic } from "./UseHeaderLogic";
 
 export function Header() {
+  const { isMobile } = useHeaderLogic();
   return (
     <header className="main-header">
-      <div className="header-container">
-      <Navigation part="first" />
-        <img
-          src={logoImgHeader}
-          alt="the logo of Pokemigapi"
-          className="logo"
-        />
-      <Navigation part="second" />
-      </div>
-      <Navigation part="responsive" />
+      {isMobile ? <NavigationResponsive /> : <NavigationDesktop />}
     </header>
   );
 }
