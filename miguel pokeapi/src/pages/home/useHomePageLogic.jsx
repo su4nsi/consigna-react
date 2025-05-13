@@ -11,12 +11,14 @@ export const useHomePageLogic = () => {
   const status = useSelector((state) => state.items.status);
   const error = useSelector((state) => state.items.error);
   const [pokedata, setPokedata] = useState([]);
+  const [isPokedataReady, setIsPokedataReady] = useState(false);
   const [index, setIndex] = useState(0);
-  console.log(index);
+  console.log("index", index);
 
   useEffect(() => {
     if (Array.isArray(data) && data.length > 0) {
       setPokedata(data);
+      setIsPokedataReady(true);
     }
   }, [data]);
 
@@ -24,6 +26,7 @@ export const useHomePageLogic = () => {
     const numIndex = parseInt(localStorage.getItem("index"));
     if (numIndex && numIndex >= 0) {
       setIndex(numIndex);
+      console.log("numIndex", numIndex);
     } else {
       localStorage.setItem("index", 0);
       setIndex(0);
@@ -51,6 +54,7 @@ export const useHomePageLogic = () => {
     clear,
     pokedata,
     index,
+    isPokedataReady,
     setIndex,
   };
 };
