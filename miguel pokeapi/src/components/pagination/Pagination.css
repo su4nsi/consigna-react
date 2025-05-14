@@ -1,0 +1,24 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+.pagination-button {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+.pagination-icon {
+  width: 20px;
+  height: 20px;
+}
+.pagination-button:active {
+  background-color: #ccc;
+}
