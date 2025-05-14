@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import "./Pagination.css";
 import { usePaginationLogic } from "./usePaginationLogic";
+
 const Pagination = ({ index, setIndex, total }) => {
   const {
     handleFirstPage,
@@ -7,7 +8,11 @@ const Pagination = ({ index, setIndex, total }) => {
     handleNextPage,
     handlePreviousPage,
     handlePage,
+    getVisibleIndexes,
   } = usePaginationLogic(total);
+
+  const visibleIndexes = getVisibleIndexes(index, 5);
+
   return (
     <div className="pagination-container">
       <button
@@ -24,6 +29,16 @@ const Pagination = ({ index, setIndex, total }) => {
       >
         Previous
       </button>
+      {visibleIndexes.map((pageIndex) => (
+        <button
+          key={pageIndex}
+          className={`pagination-button ${index === pageIndex ? "active" : ""}`}
+          onClick={() => setIndex(handlePage(pageIndex))}
+          disabled={index === pageIndex}
+        >
+          {pageIndex + 1}
+        </button>
+      ))}
       <button
         className="pagination-button"
         onClick={() => setIndex(handleNextPage(index))}

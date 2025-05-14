@@ -24,12 +24,24 @@ export const usePaginationLogic = (total) => {
   const handlePage = (pageIndex) => {
     return pageIndex;
   };
+  const getVisibleIndexes = (index, visiblePages = 5) => {
+    const half = Math.floor(visiblePages / 2);
+    let start = Math.max(0, index - half);
+    let end = start + visiblePages;
 
+    if (end > total) {
+      end = total;
+      start = Math.max(0, end - visiblePages);
+    }
+
+    return Array.from({ length: end - start }, (_, i) => start + i);
+  };
   return {
     handleFirstPage,
     handleLastPage,
     handleNextPage,
     handlePreviousPage,
     handlePage,
+    getVisibleIndexes,
   };
 };
