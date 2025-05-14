@@ -11,7 +11,7 @@ const Pagination = ({ index, setIndex, total }) => {
     getVisibleIndexes,
   } = usePaginationLogic(total);
 
-  const visibleIndexes = getVisibleIndexes(index, 5);
+  const visibleIndexes = getVisibleIndexes(index, 4);
 
   return (
     <div className="pagination-container">
