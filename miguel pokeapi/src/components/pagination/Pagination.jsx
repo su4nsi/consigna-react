@@ -13,7 +13,7 @@ const Pagination = ({ index, setIndex, total }) => {
       <button
         className="pagination-button"
         onClick={() => setIndex(handleFirstPage())}
-        disabled={index === total - 1}
+        disabled={index === 0}
       >
         First
       </button>
@@ -24,15 +24,6 @@ const Pagination = ({ index, setIndex, total }) => {
       >
         Previous
       </button>
-      {Array.from({ length: total }, (_, i) => (
-        <button
-          key={i}
-          className={`pagination-button ${index === i ? "active" : ""}`}
-          onClick={() => setIndex(handlePage(i))}
-        >
-          {i + 1}
-        </button>
-      ))}
       <button
         className="pagination-button"
         onClick={() => setIndex(handleNextPage(index))}

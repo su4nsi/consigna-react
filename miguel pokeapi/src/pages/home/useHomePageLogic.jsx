@@ -12,7 +12,7 @@ export const useHomePageLogic = () => {
   const error = useSelector((state) => state.items.error);
   const [pokedata, setPokedata] = useState([]);
   const [isPokedataReady, setIsPokedataReady] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState();
   console.log("index", index);
 
   useEffect(() => {
@@ -26,12 +26,15 @@ export const useHomePageLogic = () => {
     const numIndex = parseInt(localStorage.getItem("index"));
     if (numIndex && numIndex >= 0) {
       setIndex(numIndex);
-      console.log("numIndex", numIndex);
     } else {
       localStorage.setItem("index", 0);
       setIndex(0);
     }
   }, []);
+
+  useEffect(() => {
+    if (index !== undefined) localStorage.setItem("index", index);
+  }, [index]);
 
   const loadItems = () => {
     dispatch(fetchItems());
