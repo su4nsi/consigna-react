@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useHomePageLogic } from "./useHomePageLogic";
 import Pagination from "../../components/pagination/Pagination";
-
+import Search from "../../components/search/Search";
 const HomePage = () => {
   const {
     status,
@@ -12,6 +12,7 @@ const HomePage = () => {
     index,
     isPokedataReady,
     setIndex,
+    handleSearch,
   } = useHomePageLogic();
 
   useEffect(() => {
@@ -26,9 +27,10 @@ const HomePage = () => {
     return (
       <div className="pokedex-container">
         <h1>Pokedex</h1>
-        {pokedata[index].map((pokemon) => (
+        <Search onSearch={handleSearch} />
+        {pokedata[index]?.map((pokemon) => (
           <li key={pokemon.name}>{pokemon.name}</li>
-        ))}
+        )) || <p>No results found</p>}
         <Pagination index={index} setIndex={setIndex} total={pokedata.length} />
       </div>
     );

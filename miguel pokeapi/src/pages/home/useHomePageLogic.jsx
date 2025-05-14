@@ -48,6 +48,32 @@ export const useHomePageLogic = () => {
     dispatch(clearItems());
   };
 
+  const handleSearch = (query, preload = false) => {
+    const lowercasedQuery = query.toLowerCase();
+    //Flat array pokedata
+    const flatData = [];
+    for (let i = 0; i < data.length; i++) {
+      const subData = data[i];
+      for (let j = 0; j < subData.length; j++) {
+        flatData.push(subData[j]);
+      }
+    }
+    //Filter
+    const filtered = flatData.filter((pokemon) =>
+      pokemon?.name?.toLowerCase().includes(lowercasedQuery)
+    );
+    //Paginate array pokedata
+    const paginated = [];
+    for (let i = 0; i < filtered.length; i += 20) {
+      paginated.push(filtered.slice(i, i + 20));
+    }
+    setPokedata(paginated);
+    if (!preload) {
+      setIndex(0);
+    }
+    setIsPokedataReady(true);
+  };
+
   return {
     data,
     status,
@@ -59,5 +85,6 @@ export const useHomePageLogic = () => {
     index,
     isPokedataReady,
     setIndex,
+    handleSearch,
   };
 };
