@@ -1,0 +1,62 @@
+.pokemon-card {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 15px;
+  background-color: #c85048;
+  margin: 1px;
+  transition: transform 0.5s ease-out;
+  width: 50%;
+  border-radius: 10px;
+  height: 100px;
+  color: black;
+}
+.pokemon-card:hover {
+  background-color: #a8b8c8;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.pokemon-card h1 {
+  font-family: "Press Start 2P", system-ui;
+  font-size: 1.5em;
+}
+.pokemon-card h2 {
+  font-family: "Press Start 2P", system-ui;
+  font-size: 1.2em;
+}
+.pokemon-card img {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .pokemon-card {
+    width: 80%;
+    height: 100%;
+    background-color: #c85048;
+  }
+  .pokemon-card img {
+    width: 40px;
+  }
+  .pokemon-card h1 {
+    font-size: 0.6em;
+  }
+  .pokemon-card h2 {
+    font-size: 0.7em;
+  }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  .pokemon-card {
+    width: 70%;
+    height: 100%;
+    background-color: #c85048;
+  }
+
+  .pokemon-card h1 {
+    font-size: 1em;
+  }
+  .pokemon-card h2 {
+    font-size: 0.9em;
+  }
+}

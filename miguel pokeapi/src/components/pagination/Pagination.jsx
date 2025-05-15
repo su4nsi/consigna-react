@@ -9,9 +9,10 @@ const Pagination = ({ index, setIndex, total }) => {
     handlePreviousPage,
     handlePage,
     getVisibleIndexes,
+    getNumberOfPages,
   } = usePaginationLogic(total);
 
-  const visibleIndexes = getVisibleIndexes(index, 4);
+  const visibleIndexes = getVisibleIndexes(index, getNumberOfPages());
 
   return (
     <div className="pagination-container">

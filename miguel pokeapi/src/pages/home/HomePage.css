@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.pokedex-title {
+  font-size: 3em;
+}
+.pokedex-subheader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+.pokedex-subheader h1 {
+  font-family: "Press Start 2P", system-ui;
+}
+.pokedex-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+@media (max-width: 600px) {
+  .pokedex-subheader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    margin-bottom: 20px;
+  }
+}
