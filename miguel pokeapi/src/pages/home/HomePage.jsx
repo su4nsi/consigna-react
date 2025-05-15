@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useHomePageLogic } from "./useHomePageLogic";
 import Pagination from "../../components/pagination/Pagination";
 import Search from "../../components/search/Search";
+import "./HomePage.css";
 const HomePage = () => {
   const {
     status,
