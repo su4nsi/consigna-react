@@ -13,7 +13,10 @@ export const usePaginationLogic = (total) => {
     }
     return index;
   };
-
+  const getNumberOfPages = () => {
+    if (window.innerWidth < 600) return 0;
+    else return 4;
+  };
   const handlePreviousPage = (index) => {
     if (index > 0) {
       return index - 1;
@@ -43,5 +46,6 @@ export const usePaginationLogic = (total) => {
     handlePreviousPage,
     handlePage,
     getVisibleIndexes,
+    getNumberOfPages,
   };
 };
