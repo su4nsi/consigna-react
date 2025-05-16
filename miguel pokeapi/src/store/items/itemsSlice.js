@@ -75,8 +75,7 @@ export const itemsSlice = createSlice({
       .addCase(fetchItemById.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
-      })
-
+      });
   },
 });
 

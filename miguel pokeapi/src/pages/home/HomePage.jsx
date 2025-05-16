@@ -3,6 +3,7 @@ import { useHomePageLogic } from "./useHomePageLogic";
 import Pagination from "../../components/pagination/Pagination";
 import Search from "../../components/search/Search";
 import "./HomePage.css";
+import { Link } from "react-router-dom";
 import PokemonCard from "../../components/PokemonCard/PokemonCard";
 const HomePage = () => {
   const {
@@ -37,12 +38,18 @@ const HomePage = () => {
             const id = parts[parts.length - 2];
             const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
             return (
-              <PokemonCard
+              <Link
                 key={id}
-                id={id}
-                name={pokemon.name}
-                imageUrl={imageUrl}
-              />
+                className="link-pokemon"
+                to={`/pokedex/${pokemon.name}`}
+              >
+                <PokemonCard
+                  id={id}
+                  name={pokemon.name}
+                  imageUrl={imageUrl}
+                  to={`/pokedex/${pokemon.name}`}
+                />
+              </Link>
             );
           }) || <p>No results found</p>}
 

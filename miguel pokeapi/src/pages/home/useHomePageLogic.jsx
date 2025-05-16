@@ -1,10 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import {
-  fetchItems,
-  fetchItemById,
-  clearItems,
-} from "../../store/items/itemsSlice";
+import { fetchItems, clearItems } from "../../store/items/itemsSlice";
 export const useHomePageLogic = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.items.data);
@@ -38,10 +34,6 @@ export const useHomePageLogic = () => {
 
   const loadItems = () => {
     dispatch(fetchItems());
-  };
-
-  const loadItemById = (id) => {
-    dispatch(fetchItemById(id));
   };
 
   const clear = () => {
@@ -79,7 +71,6 @@ export const useHomePageLogic = () => {
     status,
     error,
     loadItems,
-    loadItemById,
     clear,
     pokedata,
     index,
