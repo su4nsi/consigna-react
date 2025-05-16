@@ -63,6 +63,10 @@ const Pokemon = () => {
           {data?.abilities?.map((abilitiesO) => (
             <span key={abilitiesO.ability.name}>{abilitiesO.ability.name}</span>
           ))}
+          MOVES
+          {data?.moves?.map((movesO) => (
+            <span key={movesO.move.name}>{movesO.move.name}</span>
+          ))}
         </div>
       </div>
     </>
