@@ -1,24 +1,53 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { fetchItemById, clearItems } from "../../store/items/itemsSlice";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { fetchItemById } from "../../store/items/itemsSlice";
 export const usePokemonLogic = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.items.data);
+  const dataAll = useSelector((state) => state.items.pokemons);
+  const data = useSelector((state) => state.items.pokemon);
   const status = useSelector((state) => state.items.status);
   const error = useSelector((state) => state.items.error);
+  const { pokemonName } = useParams();
   useEffect(() => {
-    console.log("data updated", data);
+    console.log("data pokemon updated", data);
   }, [data]);
-
+  useEffect(() => {
+    console.log("data pokemonS updated", dataAll);
+  }, [dataAll]);
+  console.log("data ALL", dataAll);
   const loadItemsById = (id) => {
     dispatch(fetchItemById(id));
   };
+  const pokemonBehind = () => {
+    const flatData = [];
+    for (let i = 0; i < dataAll.length; i++) {
+      const subData = dataAll[i];
+      for (let j = 0; j < subData.length; j++) {
+        flatData.push(subData[j]);
+      }
+    }
 
-  const pokemonName = () => {
-    return document.location.pathname.split("/").filter(Boolean).pop();
+    const currentIndex = flatData.findIndex((p) => p.name === pokemonName);
+    const prevPokemon = currentIndex > 0 ? flatData[currentIndex - 1] : null;
+
+    return prevPokemon ? prevPokemon.name : null;
   };
-  const clear = () => {
-    dispatch(clearItems());
+  const pokemonAfter = () => {
+    const flatData = [];
+    for (let i = 0; i < dataAll.length; i++) {
+      const subData = dataAll[i];
+      for (let j = 0; j < subData.length; j++) {
+        flatData.push(subData[j]);
+      }
+    }
+    const currentIndex = flatData.findIndex((p) => p.name === pokemonName);
+    const nextPokemon =
+      currentIndex !== -1 && currentIndex < flatData.length - 1
+        ? flatData[currentIndex + 1]
+        : null;
+
+    return nextPokemon ? nextPokemon.name : null;
   };
 
   return {
@@ -27,5 +56,7 @@ export const usePokemonLogic = () => {
     error,
     loadItemsById,
     pokemonName,
+    pokemonBehind,
+    pokemonAfter,
   };
 };

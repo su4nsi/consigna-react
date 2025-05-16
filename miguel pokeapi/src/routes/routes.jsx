@@ -10,7 +10,7 @@ export const routes = [
     children: [{ path: "", element: <HomePage /> }],
   },
   {
-    path: "/pokedex/:pokemon",
+    path: "/pokedex/:pokemonName",
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [{ path: "", element: <Pokemon /> }],

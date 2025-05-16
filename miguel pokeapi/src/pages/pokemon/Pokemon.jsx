@@ -1,25 +1,50 @@
 import { useEffect } from "react";
 import { usePokemonLogic } from "./usePokemonLogic";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const Pokemon = () => {
-  const { status, error, loadItemsById, data, pokemonName } = usePokemonLogic();
+  const {
+    status,
+    error,
+    loadItemsById,
+    data,
+    pokemonName,
+    pokemonBehind,
+    pokemonAfter,
+  } = usePokemonLogic();
 
   useEffect(() => {
-    loadItemsById(pokemonName());
-  }, [pokemonName()]);
+    loadItemsById(pokemonName);
+  }, [pokemonName]);
+
+  const navigate = useNavigate();
 
   if (status === "loading") {
     return <p>Loading...</p>;
   }
   if (status === "failed") return <p>Error: {error}</p>;
-
+  console.log(pokemonName, pokemonBehind(), pokemonAfter());
   return (
     <>
       <div className="pokemon-container">
         <div className="pokemon-header">
-          <Link className="link-pokedex" to={`/`}>
+          <button
+            className="link-pokedex"
+            disabled={!pokemonBehind()}
+            onClick={() => navigate(`/pokedex/${pokemonBehind()}`)}
+          >
+            Backward
+          </button>
+          <button
+            className="link-pokedex"
+            disabled={!pokemonAfter()}
+            onClick={() => navigate(`/pokedex/${pokemonAfter()}`)}
+          >
+            Forward
+          </button>
+          <button className="link-pokedex" onClick={() => navigate(`/`)}>
             Go Back to Pokedex
-          </Link>
+          </button>
           <img src={data?.sprites?.front_default} alt={data?.name} />
           {data.name}
           {" #"}

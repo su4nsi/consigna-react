@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { fetchItems, clearItems } from "../../store/items/itemsSlice";
 export const useHomePageLogic = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.items.data);
+  const data = useSelector((state) => state.items.pokemons);
   const status = useSelector((state) => state.items.status);
   const error = useSelector((state) => state.items.error);
   const [pokedata, setPokedata] = useState([]);

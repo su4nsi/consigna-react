@@ -36,13 +36,14 @@ export const fetchItemById = createAsyncThunk(
 export const itemsSlice = createSlice({
   name: "items",
   initialState: {
-    data: [],
+    pokemons: [],
+    pokemon: {},
     status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
     error: null,
   },
   reducers: {
     clearItems(state) {
-      state.data = [];
+      state.pokemons = [];
       state.status = "idle";
       state.error = null;
     },
@@ -56,7 +57,7 @@ export const itemsSlice = createSlice({
       })
       .addCase(fetchItems.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload;
+        state.pokemons = action.payload;
       })
       .addCase(fetchItems.rejected, (state, action) => {
         state.status = "failed";
@@ -70,7 +71,7 @@ export const itemsSlice = createSlice({
       })
       .addCase(fetchItemById.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload;
+        state.pokemon = action.payload;
       })
       .addCase(fetchItemById.rejected, (state, action) => {
         state.status = "failed";

@@ -10,7 +10,6 @@ const HomePage = () => {
     status,
     error,
     loadItems,
-    data,
     pokedata,
     index,
     isPokedataReady,
