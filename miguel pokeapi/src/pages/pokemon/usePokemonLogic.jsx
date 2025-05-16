@@ -24,7 +24,7 @@ export const usePokemonLogic = () => {
 
   const pokemonBehind = () => {
     const flatData = [];
-    for (let i = 0; i < dataAll.length; i++) {
+    for (let i = 0; i < dataAll?.length; i++) {
       const subData = dataAll[i];
       for (let j = 0; j < subData.length; j++) {
         flatData.push(subData[j]);

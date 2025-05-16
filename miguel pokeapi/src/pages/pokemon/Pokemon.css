@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.pokemon-container {
+  margin: 2em;
+  background-color: #a8b8c8;
+  padding: 1em;
+  border-radius: 10px;
+  height: 350px;
+}
+.pokemon-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1em;
+}
+.pokemon-header h3 {
+  font-size: 1em;
+  font-family: "Press Start 2P", system-ui;
+}
+.pokemon-header img {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+.pokemon-more {
+}
