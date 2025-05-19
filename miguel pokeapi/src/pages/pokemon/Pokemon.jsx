@@ -23,7 +23,6 @@ const Pokemon = () => {
     return <p>Loading...</p>;
   }
   if (status === "failed") return <p>Error: {error}</p>;
-  console.log(pokemonName, pokemonBehind(), pokemonAfter());
   return (
     <>
       <div className="pokemon-container">
@@ -36,48 +35,85 @@ const Pokemon = () => {
           <h3> {data.name}</h3>
         </div>
         <div className="pokemon-more">
+          <div className="buttons">
+            <button className="link-pokedex" onClick={() => navigate(`/`)}>
+              Back
+            </button>
+            <button
+              className="link-pokedex"
+              disabled={!pokemonBehind()}
+              onClick={() => navigate(`/pokedex/${pokemonBehind()}`)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="icon"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+                />
+              </svg>
+            </button>
+            <button
+              className="link-pokedex"
+              disabled={!pokemonAfter()}
+              onClick={() => navigate(`/pokedex/${pokemonAfter()}`)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="icon"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                />
+              </svg>
+            </button>
+          </div>
           <p>
-            {"Height"}
-            {data.height}
+            <strong>Height:</strong> {data.height}
           </p>
           <p>
-            {" "}
-            {"Weight"}
-            {data.weight}
+            <strong>Weight:</strong> {data.weight}
           </p>
-          TYPE
-          {data?.types?.map((typeO) => (
-            <span key={typeO.type.name}>{typeO.type.name}</span>
-          ))}
-        </div>
-        <div className="abilities-moves">
-          ABILITIES
-          {data?.abilities?.map((abilitiesO) => (
-            <span key={abilitiesO.ability.name}>{abilitiesO.ability.name}</span>
-          ))}
-          MOVES
-          {data?.moves?.map((movesO) => (
-            <span key={movesO.move.name}>{movesO.move.name}</span>
-          ))}
+          <div className="pokemon-types">
+            <strong>Types:</strong>
+            {data?.types?.map((typeO) => (
+              <span key={typeO.type.name} className="type">
+                {typeO.type.name}
+              </span>
+            ))}
+          </div>
+          <div className="abilities-list">
+            <strong>Abilities:</strong>
+            {data?.abilities?.map((ab) => (
+              <span key={ab.ability.name} className="ability">
+                {ab.ability.name}
+              </span>
+            ))}
+          </div>
         </div>
 
-        <button
-          className="link-pokedex"
-          disabled={!pokemonBehind()}
-          onClick={() => navigate(`/pokedex/${pokemonBehind()}`)}
-        >
-          Backward
-        </button>
-        <button
-          className="link-pokedex"
-          disabled={!pokemonAfter()}
-          onClick={() => navigate(`/pokedex/${pokemonAfter()}`)}
-        >
-          Forward
-        </button>
-        <button className="link-pokedex" onClick={() => navigate(`/`)}>
-          Go Back to Pokedex
-        </button>
+        <div>
+          <strong>Moves:</strong>
+          <div className="moves-box">
+            {data?.moves?.map((mv) => (
+              <span key={mv.move.name} className="move">
+                {mv.move.name}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

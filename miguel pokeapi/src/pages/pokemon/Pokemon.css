@@ -5,13 +5,17 @@
   background-color: #a8b8c8;
   padding: 1em;
   border-radius: 10px;
-  height: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  color: black;
+  cursor: default;
+  user-select: none;
 }
 .pokemon-header {
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 1em;
+  border-bottom: 1px solid black;
 }
 .pokemon-header h3 {
   font-size: 1em;
@@ -24,4 +28,87 @@
   align-items: center;
 }
 .pokemon-more {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.pokemon-types {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.type {
+  background-color: #eee;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.abilities-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ability {
+  background-color: #ddeeff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.moves-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: 9em;
+  overflow-y: auto;
+  padding-right: 4px;
+  padding-top: 4px;
+  margin-top: 8px;
+  border-radius: 8px;
+}
+
+.move {
+  background-color: #ddeeffb6;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.link-pokedex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: #f0f0f0;
+  border: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.link-pokedex:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.link-pokedex:hover {
+  background-color: #e0e0e0;
+}
+
+.icon {
+  width: 30px;
+  height: 20px;
 }

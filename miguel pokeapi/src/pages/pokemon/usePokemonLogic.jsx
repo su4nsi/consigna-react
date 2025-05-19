@@ -14,10 +14,6 @@ export const usePokemonLogic = () => {
     console.log("data pokemon updated", data);
   }, [data]);
 
-  useEffect(() => {
-    console.log("data pokemonS updated", dataAll);
-  }, [dataAll]);
-
   const loadItemsById = (id) => {
     dispatch(fetchItemById(id));
   };
