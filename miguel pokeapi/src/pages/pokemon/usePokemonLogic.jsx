@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchItemById } from "../../store/items/itemsSlice";
+import { fetchItemById, fetchItems } from "../../store/items/itemsSlice";
 export const usePokemonLogic = () => {
   const dispatch = useDispatch();
   const dataAll = useSelector((state) => state.items.pokemons);
@@ -21,6 +21,12 @@ export const usePokemonLogic = () => {
   const loadItemsById = (id) => {
     dispatch(fetchItemById(id));
   };
+
+  useEffect(() => {
+    if (!dataAll || dataAll.length === 0) {
+      dispatch(fetchItems());
+    }
+  }, [dataAll]);
 
   const pokemonBehind = () => {
     const flatData = [];
