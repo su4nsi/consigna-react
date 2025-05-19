@@ -22,14 +22,17 @@ export async function getAllItems() {
 
 export async function getById(id) {
   try {
-    const response = await fetch(`${BASE_URL}/pokemon/${id}`);
+    const response = await fetch(`${BASE_URL}pokemon/${id}`);
+
     if (!response.ok) {
-      throw new Error(`Failed to fetch item by ID: ${response.statusText}`);
+      throw new Error(
+        `Failed to fetch Pokemon by name: ${response.statusText}`
+      );
     }
     const data = await response.json();
     return { success: true, data };
   } catch (error) {
-    console.error("Error fetching item by ID:", error);
+    console.error("Error fetching Pokemon by name:", error);
     return { success: false, error: error.message };
   }
 }

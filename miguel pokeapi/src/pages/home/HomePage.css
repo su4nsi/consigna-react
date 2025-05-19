@@ -19,7 +19,9 @@
   align-items: center;
   height: 100%;
 }
-
+.link-pokemon {
+  display: contents;
+}
 @media (max-width: 600px) {
   .pokedex-subheader {
     display: flex;
