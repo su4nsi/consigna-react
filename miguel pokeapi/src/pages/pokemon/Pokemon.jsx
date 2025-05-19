@@ -80,12 +80,14 @@ const Pokemon = () => {
               </svg>
             </button>
           </div>
-          <p>
-            <strong>Height:</strong> {data.height}
-          </p>
-          <p>
-            <strong>Weight:</strong> {data.weight}
-          </p>
+          <div className="morph">
+            <p>
+              <strong>Height:</strong> {data.height}
+            </p>
+            <p>
+              <strong>Weight:</strong> {data.weight}
+            </p>
+          </div>
           <div className="pokemon-types">
             <strong>Types:</strong>
             {data?.types?.map((typeO) => (
