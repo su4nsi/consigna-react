@@ -9,9 +9,24 @@ export async function getAllItems() {
     }
     const data = await response.json();
     const items = data.results;
+    const dataWithType = [];
     const paginated = [];
-    for (let i = 0; i < items.length; i += 20) {
-      paginated.push(items.slice(i, i + 20));
+    for (let i = 0; i < items.length; ++i) {
+      console.log(i);
+      const name = items[i].name;
+      const res = await fetch(`${BASE_URL}/pokemon/${name}`);
+      if (!res.ok) {
+        throw new Error(`Failed to fetch a specific item ${res.statusText}`);
+      }
+      const details = await res.json();
+      dataWithType.push({
+        name,
+        types: details.types.map((t) => t.type.name),
+        id: details.id,
+      });
+    }
+    for (let i = 0; i < dataWithType.length; i += 20) {
+      paginated.push(dataWithType.slice(i, i + 20));
     }
     return { success: true, data: paginated };
   } catch (error) {

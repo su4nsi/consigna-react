@@ -25,6 +25,7 @@ const HomePage = () => {
   }
   if (status === "failed") return <p>Error: {error}</p>;
   else {
+    console.log("pokedata", pokedata);
     return (
       <div className="pokedex-container">
         <div className="pokedex-subheader">
@@ -32,25 +33,28 @@ const HomePage = () => {
           <Search onSearch={handleSearch} />
         </div>
         <div className="pokedex-grid">
-          {pokedata[index]?.map((pokemon) => {
-            const parts = pokemon.url.split("/");
-            const id = parts[parts.length - 2];
-            const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-            return (
-              <Link
-                key={id}
-                className="link-pokemon"
-                to={`/pokedex/${pokemon.name}`}
-              >
-                <PokemonCard
-                  id={id}
-                  name={pokemon.name}
-                  imageUrl={imageUrl}
+          {Array.isArray(pokedata[index]) && pokedata[index].length > 0 ? (
+            pokedata[index].map((pokemon) => {
+              const id = pokemon.id;
+              const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+              return (
+                <Link
+                  key={id}
+                  className="link-pokemon"
                   to={`/pokedex/${pokemon.name}`}
-                />
-              </Link>
-            );
-          }) || <p>No results found</p>}
+                >
+                  <PokemonCard
+                    id={id}
+                    name={pokemon.name}
+                    imageUrl={imageUrl}
+                    to={`/pokedex/${pokemon.name}`}
+                  />
+                </Link>
+              );
+            })
+          ) : (
+            <p>No results found</p>
+          )}
 
           <Pagination
             index={index}
