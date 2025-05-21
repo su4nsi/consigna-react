@@ -37,7 +37,7 @@ export async function getById(id) {
 
 export async function getPokemonType(types) {
   try {
-    const pokemonType = [];
+    const pokemonTypeLists = [];
     for (let i = 0; i < types.length; i++) {
       const response = await fetch(`${BASE_URL}/type/${types[i]}`);
       if (!response.ok) {
@@ -47,11 +47,17 @@ export async function getPokemonType(types) {
       }
       const data = await response.json();
       const pokemons = data.pokemon.map((p) => p.pokemon);
-      pokemonType.push(...pokemons);
+      pokemonTypeLists.push(pokemons);
+    }
+
+    let andPokemonlist = pokemonTypeLists[0];
+    for (let i = 1; i < pokemonTypeLists.length; i++) {
+      const currentSet = new Set(pokemonTypeLists[i].map((p) => p.name));
+      andPokemonlist = andPokemonlist.filter((p) => currentSet.has(p.name));
     }
 
     const seen = new Set();
-    const uniquePokemon = pokemonType.filter((p) => {
+    const uniquePokemon = andPokemonlist.filter((p) => {
       if (seen.has(p.name)) return false;
       seen.add(p.name);
       return true;

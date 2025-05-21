@@ -5,6 +5,8 @@ import Search from "../../components/search/Search";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
 import PokemonCard from "../../components/PokemonCard/PokemonCard";
+import Filter from "../../components/filter/Filter";
+
 const HomePage = () => {
   const {
     status,
@@ -12,15 +14,16 @@ const HomePage = () => {
     loadItems,
     pokedata,
     index,
-    isPokedataReady,
     setIndex,
     handleSearch,
+    typesPokemon,
+    handleFilterChange,
   } = useHomePageLogic();
 
   useEffect(() => {
     loadItems();
   }, []);
-  if (status === "loading" || isPokedataReady === false) {
+  if (status === "loading") {
     return <p>Loading...</p>;
   }
   if (status === "failed") return <p>Error: {error}</p>;
@@ -30,6 +33,10 @@ const HomePage = () => {
         <div className="pokedex-subheader">
           <h1>Pokedex</h1>
           <Search onSearch={handleSearch} />
+          <Filter
+            typesPokemon={typesPokemon}
+            onFilterChange={handleFilterChange}
+          />
         </div>
         <div className="pokedex-grid">
           {pokedata[index]?.map((pokemon) => {
@@ -50,7 +57,19 @@ const HomePage = () => {
                 />
               </Link>
             );
-          }) || <p>No results found</p>}
+          }) || (
+            <div>
+              <p>No results found</p>
+              <button
+                onClick={() => {
+                  localStorage.setItem("query", "");
+                  loadItems();
+                }}
+              >
+                Reload
+              </button>
+            </div>
+          )}
 
           <Pagination
             index={index}

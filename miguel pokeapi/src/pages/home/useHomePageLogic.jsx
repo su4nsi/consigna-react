@@ -1,21 +1,46 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { fetchItems, clearItems } from "../../store/items/itemsSlice";
+import {
+  fetchItems,
+  fetchItemsByType,
+  clearItems,
+} from "../../store/items/itemsSlice";
+import { paginateArray } from "../../utils/pagination";
 export const useHomePageLogic = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.items.pokemons);
   const status = useSelector((state) => state.items.status);
   const error = useSelector((state) => state.items.error);
   const [pokedata, setPokedata] = useState([]);
-  const [isPokedataReady, setIsPokedataReady] = useState(false);
+
   const [index, setIndex] = useState();
+  const typesPokemon = [
+    "normal",
+    "fighting",
+    "flying",
+    "poison",
+    "ground",
+    "rock",
+    "bug",
+    "ghost",
+    "steel",
+    "fire",
+    "water",
+    "grass",
+    "electric",
+    "psychic",
+    "ice",
+    "dragon",
+    "dark",
+    "fairy",
+    "stellar",
+    "unknown",
+  ];
+
   console.log("index", index);
 
   useEffect(() => {
-    if (Array.isArray(data) && data.length > 0) {
-      setPokedata(data);
-      setIsPokedataReady(true);
-    }
+    setPokedata(data);
   }, [data]);
 
   useEffect(() => {
@@ -34,6 +59,10 @@ export const useHomePageLogic = () => {
 
   const loadItems = () => {
     dispatch(fetchItems());
+  };
+
+  const loadItemsByType = (typesFiltered) => {
+    dispatch(fetchItemsByType(typesFiltered));
   };
 
   const clear = () => {
@@ -55,15 +84,21 @@ export const useHomePageLogic = () => {
       pokemon?.name?.toLowerCase().includes(lowercasedQuery)
     );
     //Paginate array pokedata
-    const paginated = [];
-    for (let i = 0; i < filtered.length; i += 20) {
-      paginated.push(filtered.slice(i, i + 20));
-    }
+    const paginated = paginateArray(filtered);
     setPokedata(paginated);
     if (!preload) {
       setIndex(0);
     }
-    setIsPokedataReady(true);
+  };
+
+  const handleFilterChange = (filters) => {
+    const typesFiltered = filters.typesPokemon;
+    localStorage.setItem("query", "");
+    if (typesFiltered.length > 0) {
+      loadItemsByType(typesFiltered);
+    } else {
+      loadItems();
+    }
   };
 
   return {
@@ -74,8 +109,9 @@ export const useHomePageLogic = () => {
     clear,
     pokedata,
     index,
-    isPokedataReady,
     setIndex,
     handleSearch,
+    typesPokemon,
+    handleFilterChange,
   };
 };
