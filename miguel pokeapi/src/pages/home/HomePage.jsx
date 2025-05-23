@@ -4,9 +4,8 @@ import Pagination from "../../components/pagination/Pagination";
 import Search from "../../components/search/Search";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
-import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import Filter from "../../components/filter/Filter";
-
+import PokemonList from "../../components/PokemonList/PokemonList";
 const HomePage = () => {
   const {
     status,
@@ -47,38 +46,11 @@ const HomePage = () => {
           )}
         </div>
         <div className="pokedex-grid">
-          {pokedata[index]?.map((pokemon) => {
-            const parts = pokemon.url.split("/");
-            const id = parts[parts.length - 2];
-            const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-            return (
-              <Link
-                key={id}
-                className="link-pokemon"
-                to={`/pokedex/${pokemon.name}`}
-              >
-                <PokemonCard
-                  id={id}
-                  name={pokemon.name}
-                  imageUrl={imageUrl}
-                  to={`/pokedex/${pokemon.name}`}
-                />
-              </Link>
-            );
-          }) || (
-            <div>
-              <p>No results found</p>
-              <button
-                onClick={() => {
-                  localStorage.setItem("query", "");
-                  loadItems();
-                }}
-              >
-                Reload
-              </button>
-            </div>
-          )}
-
+          <PokemonList
+            pokedata={pokedata}
+            index={index}
+            loadItems={loadItems}
+          />
           <Pagination
             index={index}
             setIndex={setIndex}
