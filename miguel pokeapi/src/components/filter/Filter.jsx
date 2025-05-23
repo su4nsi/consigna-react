@@ -13,17 +13,19 @@ function Filter({ typesPokemon, onFilterChange }) {
   return (
     <div className="filter-container">
       <h3>Filter by Type</h3>
-      {typesPokemon.map((typePokemon) => (
-        <label key={typePokemon}>
-          <input
-            type="checkbox"
-            value={typePokemon}
-            onChange={() => handleTypeChange(typePokemon)}
-            checked={selectedTypes.includes(typePokemon)}
-          />
-          {typePokemon}
-        </label>
-      ))}
+      <div className="filter-grid">
+        {typesPokemon.map((typePokemon) => (
+          <label key={typePokemon}>
+            <input
+              type="checkbox"
+              value={typePokemon}
+              onChange={() => handleTypeChange(typePokemon)}
+              checked={selectedTypes.includes(typePokemon)}
+            />
+            {typePokemon}
+          </label>
+        ))}
+      </div>
       <button onClick={applyFilters}> Apply </button>
     </div>
   );
