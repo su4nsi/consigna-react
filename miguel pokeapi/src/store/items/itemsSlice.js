@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllItems, getById } from "../../services/api";
+import { getAllItems, getById, getPokemonType } from "../../services/api";
 
 export const fetchItems = createAsyncThunk(
   "items/fetchAll",
@@ -22,6 +22,21 @@ export const fetchItemById = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await getById(id);
+      if (response.success) {
+        return response.data;
+      } else {
+        return thunkAPI.rejectWithValue(response.error);
+      }
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
+    }
+  }
+);
+export const fetchItemsByType = createAsyncThunk(
+  "items/fetchByType",
+  async (types, thunkAPI) => {
+    try {
+      const response = await getPokemonType(types);
       if (response.success) {
         return response.data;
       } else {
@@ -74,6 +89,20 @@ export const itemsSlice = createSlice({
         state.pokemon = action.payload;
       })
       .addCase(fetchItemById.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+
+      // Fetch by Type
+      .addCase(fetchItemsByType.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(fetchItemsByType.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.pokemons = action.payload;
+      })
+      .addCase(fetchItemsByType.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });

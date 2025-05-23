@@ -4,7 +4,8 @@ import Pagination from "../../components/pagination/Pagination";
 import Search from "../../components/search/Search";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
-import PokemonCard from "../../components/PokemonCard/PokemonCard";
+import Filter from "../../components/filter/Filter";
+import PokemonList from "../../components/PokemonList/PokemonList";
 const HomePage = () => {
   const {
     status,
@@ -12,55 +13,56 @@ const HomePage = () => {
     loadItems,
     pokedata,
     index,
-    isPokedataReady,
     setIndex,
     handleSearch,
+    typesPokemon,
+    handleFilterChange,
+    isFilterOpen,
+    setIsFilterOpen,
   } = useHomePageLogic();
 
   useEffect(() => {
     loadItems();
   }, []);
-  if (status === "loading" || isPokedataReady === false) {
-    return <p>Loading...</p>;
-  }
-  if (status === "failed") return <p>Error: {error}</p>;
-  else {
-    return (
-      <div className="pokedex-container">
-        <div className="pokedex-subheader">
-          <h1>Pokedex</h1>
-          <Search onSearch={handleSearch} />
-        </div>
-        <div className="pokedex-grid">
-          {pokedata[index]?.map((pokemon) => {
-            const parts = pokemon.url.split("/");
-            const id = parts[parts.length - 2];
-            const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-            return (
-              <Link
-                key={id}
-                className="link-pokemon"
-                to={`/pokedex/${pokemon.name}`}
-              >
-                <PokemonCard
-                  id={id}
-                  name={pokemon.name}
-                  imageUrl={imageUrl}
-                  to={`/pokedex/${pokemon.name}`}
-                />
-              </Link>
-            );
-          }) || <p>No results found</p>}
 
-          <Pagination
-            index={index}
-            setIndex={setIndex}
-            total={pokedata.length}
+  console.log(isFilterOpen);
+  return (
+    <div className="pokedex-container">
+      <div className="pokedex-subheader">
+        <h1>Pokedex</h1>
+        <Search onSearch={handleSearch} />
+        <button onClick={() => setIsFilterOpen(!isFilterOpen)}>
+          Toggle Filter
+        </button>
+        {isFilterOpen && (
+          <Filter
+            typesPokemon={typesPokemon}
+            onFilterChange={handleFilterChange}
           />
-        </div>
+        )}
       </div>
-    );
-  }
+      <div className="pokedex-grid">
+        {status === "loading" ? (
+          <p>Loading...</p>
+        ) : status === "failed" ? (
+          <p>Error: {error}</p>
+        ) : (
+          <>
+            <PokemonList
+              pokedata={pokedata}
+              index={index}
+              loadItems={loadItems}
+            />
+            <Pagination
+              index={index}
+              setIndex={setIndex}
+              total={pokedata.length}
+            />
+          </>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default HomePage;
