@@ -18,6 +18,8 @@ const HomePage = () => {
     handleSearch,
     typesPokemon,
     handleFilterChange,
+    isFilterOpen,
+    setIsFilterOpen,
   } = useHomePageLogic();
 
   useEffect(() => {
@@ -28,15 +30,21 @@ const HomePage = () => {
   }
   if (status === "failed") return <p>Error: {error}</p>;
   else {
+    console.log(isFilterOpen);
     return (
       <div className="pokedex-container">
         <div className="pokedex-subheader">
           <h1>Pokedex</h1>
           <Search onSearch={handleSearch} />
-          <Filter
-            typesPokemon={typesPokemon}
-            onFilterChange={handleFilterChange}
-          />
+          <button onClick={() => setIsFilterOpen(!isFilterOpen)}>
+            Toggle Filter
+          </button>
+          {isFilterOpen && (
+            <Filter
+              typesPokemon={typesPokemon}
+              onFilterChange={handleFilterChange}
+            />
+          )}
         </div>
         <div className="pokedex-grid">
           {pokedata[index]?.map((pokemon) => {

@@ -12,7 +12,7 @@ export const useHomePageLogic = () => {
   const status = useSelector((state) => state.items.status);
   const error = useSelector((state) => state.items.error);
   const [pokedata, setPokedata] = useState([]);
-
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [index, setIndex] = useState();
   const typesPokemon = [
     "normal",
@@ -113,5 +113,7 @@ export const useHomePageLogic = () => {
     handleSearch,
     typesPokemon,
     handleFilterChange,
+    setIsFilterOpen,
+    isFilterOpen,
   };
 };
