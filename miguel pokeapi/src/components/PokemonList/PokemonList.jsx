@@ -1,4 +1,3 @@
-// components/PokemonList/PokemonList.jsx
 import { Link } from "react-router-dom";
 import PokemonCard from "../PokemonCard/PokemonCard";
 
