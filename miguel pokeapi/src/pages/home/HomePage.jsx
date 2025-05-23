@@ -24,42 +24,45 @@ const HomePage = () => {
   useEffect(() => {
     loadItems();
   }, []);
-  if (status === "loading") {
-    return <p>Loading...</p>;
-  }
-  if (status === "failed") return <p>Error: {error}</p>;
-  else {
-    console.log(isFilterOpen);
-    return (
-      <div className="pokedex-container">
-        <div className="pokedex-subheader">
-          <h1>Pokedex</h1>
-          <Search onSearch={handleSearch} />
-          <button onClick={() => setIsFilterOpen(!isFilterOpen)}>
-            Toggle Filter
-          </button>
-          {isFilterOpen && (
-            <Filter
-              typesPokemon={typesPokemon}
-              onFilterChange={handleFilterChange}
-            />
-          )}
-        </div>
-        <div className="pokedex-grid">
-          <PokemonList
-            pokedata={pokedata}
-            index={index}
-            loadItems={loadItems}
+
+  console.log(isFilterOpen);
+  return (
+    <div className="pokedex-container">
+      <div className="pokedex-subheader">
+        <h1>Pokedex</h1>
+        <Search onSearch={handleSearch} />
+        <button onClick={() => setIsFilterOpen(!isFilterOpen)}>
+          Toggle Filter
+        </button>
+        {isFilterOpen && (
+          <Filter
+            typesPokemon={typesPokemon}
+            onFilterChange={handleFilterChange}
           />
-          <Pagination
-            index={index}
-            setIndex={setIndex}
-            total={pokedata.length}
-          />
-        </div>
+        )}
       </div>
-    );
-  }
+      <div className="pokedex-grid">
+        {status === "loading" ? (
+          <p>Loading...</p>
+        ) : status === "failed" ? (
+          <p>Error: {error}</p>
+        ) : (
+          <>
+            <PokemonList
+              pokedata={pokedata}
+              index={index}
+              loadItems={loadItems}
+            />
+            <Pagination
+              index={index}
+              setIndex={setIndex}
+              total={pokedata.length}
+            />
+          </>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default HomePage;
