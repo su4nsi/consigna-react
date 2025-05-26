@@ -19,3 +19,10 @@
   max-height: 70vh;
   overflow-y: auto;
 }
+
+@media (max-width: 500px) {
+  .modal-filter-content {
+    padding: 2rem;
+    width: 290px;
+  }
+}

@@ -41,32 +41,45 @@
 
 .modal-filter-buttons {
   display: flex;
+  justify-content: center;
   margin: 0.5em;
   margin-top: 0.5em;
-
   gap: 30px;
 }
 .modal-filter-buttons button {
   display: flex;
   justify-content: center;
-  padding: 1em;
-  width: 100%;
+  padding: 10px;
   font-size: 1em;
   border-radius: 10px;
   border: 1 px solid black;
   cursor: pointer;
 }
 .apply {
-  background-color: #00905e;
+  background-color: #5c831c;
+  stroke: white;
 }
 
 .cancel {
-  background-color: #8f1616;
+  background-color: #ffe5dd;
+  stroke: black;
 }
 .modal-filter-buttons svg {
-  color: white;
-  stroke: white;
-  width: 30px;
+  width: 20px;
   height: auto;
   stroke-width: 2px;
+}
+
+@media (max-width: 500px) {
+  .filter-container h2 {
+    font-size: 1.2rem;
+  }
+  .type-box {
+    padding: 8% 10%;
+  }
+  .filter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
 }
