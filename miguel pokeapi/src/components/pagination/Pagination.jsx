@@ -10,6 +10,7 @@ const Pagination = ({ index, setIndex, total }) => {
     handlePage,
     getVisibleIndexes,
     getNumberOfPages,
+    isResponsive,
   } = usePaginationLogic(total);
 
   const visibleIndexes = getVisibleIndexes(index, getNumberOfPages());
@@ -103,6 +104,47 @@ const Pagination = ({ index, setIndex, total }) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+          />
+        </svg>
+      </button>
+
+      <button
+        className="floating-button left"
+        onClick={() => setIndex(handlePreviousPage(index))}
+        disabled={index === 0}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="pagination-icon"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15.75 19.5 8.25 12l7.5-7.5"
+          />
+        </svg>
+      </button>
+      <button
+        className="floating-button right"
+        onClick={() => setIndex(handleNextPage(index))}
+        disabled={index === total - 1}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="pagination-icon"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m8.25 4.5 7.5 7.5-7.5 7.5"
           />
         </svg>
       </button>
