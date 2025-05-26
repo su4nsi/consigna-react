@@ -35,8 +35,8 @@ function Filter({ typesPokemon, onFilterChange, onClose }) {
             viewBox="0 0 24 24"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M15.75 19.5 8.25 12l7.5-7.5"
             />
           </svg>
@@ -48,8 +48,8 @@ function Filter({ typesPokemon, onFilterChange, onClose }) {
             viewBox="0 0 24 24"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="m4.5 12.75 6 6 9-13.5"
             />
           </svg>
