@@ -26,7 +26,9 @@
 }
 .pokemon-card img {
   width: 100px;
-  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  user-select: none;
   border-radius: 10px;
 }
 
