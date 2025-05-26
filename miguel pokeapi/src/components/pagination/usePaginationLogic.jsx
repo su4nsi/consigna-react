@@ -39,6 +39,7 @@ export const usePaginationLogic = (total) => {
 
     return Array.from({ length: end - start }, (_, i) => start + i);
   };
+
   return {
     handleFirstPage,
     handleLastPage,

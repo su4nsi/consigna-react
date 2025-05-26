@@ -3,8 +3,7 @@ import { useHomePageLogic } from "./useHomePageLogic";
 import Pagination from "../../components/pagination/Pagination";
 import Search from "../../components/search/Search";
 import "./HomePage.css";
-import { Link } from "react-router-dom";
-import Filter from "../../components/filter/Filter";
+import ModalFilter from "../../components/filter/modalFilter/ModalFilter";
 import PokemonList from "../../components/PokemonList/PokemonList";
 const HomePage = () => {
   const {
@@ -31,15 +30,17 @@ const HomePage = () => {
       <div className="pokedex-subheader">
         <h1>Pokedex</h1>
         <Search onSearch={handleSearch} />
-        <button onClick={() => setIsFilterOpen(!isFilterOpen)}>
-          Toggle Filter
-        </button>
-        {isFilterOpen && (
-          <Filter
-            typesPokemon={typesPokemon}
-            onFilterChange={handleFilterChange}
-          />
-        )}
+        <button onClick={() => setIsFilterOpen(true)}>Filter by Type</button>
+
+        <ModalFilter
+          isOpen={isFilterOpen}
+          onClose={() => setIsFilterOpen(false)}
+          typesPokemon={typesPokemon}
+          onFilterChange={(filters) => {
+            handleFilterChange(filters);
+            setIsFilterOpen(false);
+          }}
+        />
       </div>
       <div className="pokedex-grid">
         {status === "loading" ? (

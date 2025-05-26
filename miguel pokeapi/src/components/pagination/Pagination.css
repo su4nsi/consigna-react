@@ -22,3 +22,33 @@
 .pagination-button:active {
   background-color: #ccc;
 }
+
+.floating-button {
+  position: fixed;
+  z-index: 998;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  border: none;
+  background-color: #60841c;
+  color: white;
+  cursor: pointer;
+}
+
+.floating-button.left {
+  left: 20px;
+}
+
+.floating-button.right {
+  right: 20px;
+}
+
+.floating-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}

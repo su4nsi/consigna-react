@@ -9,6 +9,14 @@
   align-items: center;
   gap: 100px;
 }
+.pokedex-subheader button {
+  cursor: pointer;
+  user-select: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: gray;
+}
 .pokedex-subheader h1 {
   font-family: "Press Start 2P", system-ui;
 }
@@ -28,7 +36,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0px;
-    margin-bottom: 20px;
+    gap: 20px;
+    margin: 20px;
+  }
+  .pokedex-subheader h1 {
+    margin: 0;
   }
 }

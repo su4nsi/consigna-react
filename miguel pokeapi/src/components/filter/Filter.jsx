@@ -1,7 +1,7 @@
 import useFilterLogic from "./useFilterLogic";
 import "./Filter.css";
 
-function Filter({ typesPokemon, onFilterChange }) {
+function Filter({ typesPokemon, onFilterChange, onClose }) {
   const { selectedTypes, handleTypeChange, getSelectedType } = useFilterLogic();
 
   const applyFilters = () => {
@@ -12,21 +12,49 @@ function Filter({ typesPokemon, onFilterChange }) {
 
   return (
     <div className="filter-container">
-      <h3>Filter by Type</h3>
+      <h2>Types</h2>
       <div className="filter-grid">
-        {typesPokemon.map((typePokemon) => (
-          <label key={typePokemon}>
-            <input
-              type="checkbox"
-              value={typePokemon}
-              onChange={() => handleTypeChange(typePokemon)}
-              checked={selectedTypes.includes(typePokemon)}
-            />
-            {typePokemon}
-          </label>
-        ))}
+        {typesPokemon.map((type) => {
+          const isSelected = selectedTypes.includes(type);
+          return (
+            <div
+              key={type}
+              className={`type-box ${isSelected ? "selected" : ""}`}
+              onClick={() => handleTypeChange(type)}
+            >
+              {type}
+            </div>
+          );
+        })}
       </div>
-      <button onClick={applyFilters}> Apply </button>
+      <div className="modal-filter-buttons">
+        <button className="cancel" onClick={onClose}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+        <button className="apply" onClick={applyFilters}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m4.5 12.75 6 6 9-13.5"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 }
