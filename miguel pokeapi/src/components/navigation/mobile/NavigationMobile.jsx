@@ -31,7 +31,7 @@ const NavigationMobile = () => {
             to="/categories"
             onClick={toggleMenu}
           >
-            Categories
+            GeoPokemon
           </Link>
         </div>
       </div>

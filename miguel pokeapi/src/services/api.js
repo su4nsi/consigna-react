@@ -71,3 +71,18 @@ export async function getPokemonType(types) {
     return { success: false, error: error.message };
   }
 }
+
+export async function getRegionInfo(id) {
+  try {
+    const response = await fetch(`${BASE_URL}region/${id}`);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch Region by id: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return { success: true, data };
+  } catch (error) {
+    console.error("Error fetching Region by Id:", error);
+    return { success: false, error: error.message };
+  }
+}

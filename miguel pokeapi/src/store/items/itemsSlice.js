@@ -1,5 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllItems, getById, getPokemonType } from "../../services/api";
+import {
+  getAllItems,
+  getById,
+  getPokemonType,
+  getRegionInfo,
+} from "../../services/api";
 
 export const fetchItems = createAsyncThunk(
   "items/fetchAll",
@@ -47,18 +52,36 @@ export const fetchItemsByType = createAsyncThunk(
     }
   }
 );
+export const fetchRegionInfo = createAsyncThunk(
+  "items/fetchRegionInfo",
+  async (id, thunkAPI) => {
+    try {
+      const response = await getRegionInfo(id);
+      if (response.success) {
+        return response.data;
+      } else {
+        return thunkAPI.rejectWithValue(response.error);
+      }
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
+    }
+  }
+);
 
 export const itemsSlice = createSlice({
   name: "items",
   initialState: {
     pokemons: [],
     pokemon: {},
+    regionInfo: [],
     status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
     error: null,
   },
   reducers: {
     clearItems(state) {
       state.pokemons = [];
+      state.pokemon = {};
+      state.typesInfo = [];
       state.status = "idle";
       state.error = null;
     },
@@ -93,7 +116,7 @@ export const itemsSlice = createSlice({
         state.error = action.payload;
       })
 
-      // Fetch by Type
+      // Fetch by  Pokemon Type
       .addCase(fetchItemsByType.pending, (state) => {
         state.status = "loading";
         state.error = null;
@@ -103,6 +126,20 @@ export const itemsSlice = createSlice({
         state.pokemons = action.payload;
       })
       .addCase(fetchItemsByType.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+
+      // Fetch by Region
+      .addCase(fetchRegionInfo.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(fetchRegionInfo.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.regionInfo = action.payload;
+      })
+      .addCase(fetchRegionInfo.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });
