@@ -26,11 +26,7 @@ const NavigationMobile = () => {
           <Link className="nav-link-mobile" to="/" onClick={toggleMenu}>
             Pokedex
           </Link>
-          <Link
-            className="nav-link-mobile"
-            to="/categories"
-            onClick={toggleMenu}
-          >
+          <Link className="nav-link-mobile" to="/regions" onClick={toggleMenu}>
             GeoPokemon
           </Link>
         </div>
