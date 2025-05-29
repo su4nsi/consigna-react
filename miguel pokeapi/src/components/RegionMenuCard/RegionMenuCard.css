@@ -1,3 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 .region-card {
-  text-decoration: none;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 12px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: #c85048;
+  border-radius: 10px;
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  color: black;
+}
+.region-card:hover {
+  background-color: #a8b8c8;
+
+  transform: scale(1.1);
 }

@@ -1,5 +1,4 @@
 import "./RegionMenuCard.css";
-
 export function RegionMenuCard({ name }) {
   return (
     <div className="region-card">

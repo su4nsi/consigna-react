@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.region-link {
+  text-decoration: none;
+}
+.region-container h2 {
+  font-family: "Press Start 2P", system-ui;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+.region-content {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
