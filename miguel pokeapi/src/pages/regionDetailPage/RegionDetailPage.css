@@ -1,8 +1,66 @@
+.region-detail-container h2 {
+  font-family: "Press Start 2P", system-ui;
+}
+
+.region-detail-subheader {
+  margin: 0;
+  margin-bottom: 2em;
+  border-bottom: 3px solid green;
+}
+
 .region-detail-subheader h2 {
+  font-family: "Press Start 2P", system-ui;
+  color: black;
+
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  margin-bottom: 0em;
+  font-size: 2.2em;
+}
+.region-detail-subheader h3 {
   font-family: "Press Start 2P", system-ui;
   color: black;
   display: flex;
   justify-content: center;
-  margin: 1.5em;
-  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 2em;
+  font-size: 1em;
+}
+
+.region-detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  align-items: center;
+}
+.region-detail-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.region-detail-link {
+  background-color: green;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  font-size: 0.8em;
+  transition: transform 0.5s ease-out;
+}
+.region-detail-link h2 {
+  pointer-events: none;
+}
+.region-detail-links :hover {
+  background-color: #a8b8c8;
+  transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  .region-detail-link {
+    width: 350px;
+  }
 }

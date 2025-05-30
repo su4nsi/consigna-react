@@ -11,6 +11,7 @@
   border-radius: 10px;
   height: 100px;
   color: black;
+  border: 5px solid #306230;
 }
 .region-card:hover {
   background-color: #a8b8c8;

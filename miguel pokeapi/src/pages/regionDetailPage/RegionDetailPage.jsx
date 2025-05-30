@@ -1,10 +1,13 @@
 import { useEffect } from "react";
 import { useRegionDetailLogic } from "./useRegionDetailLogic";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./RegionDetailPage.css";
-const RegionDetailPage = () => {
-  const { status, error, data, loadRegionItems, region } =
-    useRegionDetailLogic();
 
+const RegionDetailPage = () => {
+  const { status, error, data, loadRegionItems, region, generation } =
+    useRegionDetailLogic();
+  const navigate = useNavigate();
   useEffect(() => {
     loadRegionItems(region);
   }, []);
@@ -12,18 +15,41 @@ const RegionDetailPage = () => {
   console.log("Here is the data", data);
   return (
     <div className="region-detail-container">
-      <div className="region-detail-subheader">
-        <h2>{region}</h2>
-      </div>
-      <div className="region-detail-content">
-        {status === "loading" ? (
-          <p>Loading...</p>
-        ) : status === "failed" ? (
-          <p>Error: {error}</p>
-        ) : (
-          <></>
-        )}
-      </div>
+      {status === "loading" ? (
+        <p>Loading...</p>
+      ) : status === "failed" ? (
+        <p>Error: {error}</p>
+      ) : (
+        <>
+          <div className="region-detail-subheader">
+            <h2>{region}</h2>
+            <h3>generation {generation}</h3>
+          </div>
+
+          <div className="region-detail-content">
+            <div className="region-detail-links">
+              <Link
+                className="region-detail-link"
+                to={`/regions/${region}/pokedex`}
+              >
+                <h2>{region} pokedex</h2>
+              </Link>
+              <Link
+                className="region-detail-link"
+                to={`/regions/${region}/locations`}
+              >
+                <h2>locations</h2>
+              </Link>
+            </div>
+            <button
+              className="link-pokedex"
+              onClick={() => navigate(`/regions`)}
+            >
+              Back to Regions
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

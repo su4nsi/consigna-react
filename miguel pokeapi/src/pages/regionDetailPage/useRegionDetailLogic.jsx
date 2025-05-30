@@ -9,7 +9,7 @@ export const useRegionDetailLogic = () => {
   const error = useSelector((state) => state.items.error);
 
   const { region } = useParams();
-
+  const generation = "add generation API";
   useEffect(() => {
     console.log("data regions updated", data);
   }, [data]);
@@ -28,5 +28,6 @@ export const useRegionDetailLogic = () => {
     error,
     loadRegionItems,
     region,
+    generation,
   };
 };

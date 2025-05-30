@@ -30,7 +30,7 @@ export const routes = [
     errorElement: <ErrorPage />,
     children: [
       { path: "", element: <RegionDetailPage /> },
-      { path: "/regions/:region/:location", element: <LocationPage /> },
+      { path: "/regions/:region/locations", element: <LocationPage /> },
     ],
   },
 ];
