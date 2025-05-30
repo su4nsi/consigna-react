@@ -9,9 +9,9 @@ const RegionDetailPage = () => {
 
   console.log("Here is the data", data);
   return (
-    <div className="region-container">
-      <div className="region-subheader"></div>
-      <div className="region-content">
+    <div className="region-detail-container">
+      <div className="region-detail-subheader"></div>
+      <div className="region-detail-content">
         {status === "loading" ? (
           <p>Loading...</p>
         ) : status === "failed" ? (
