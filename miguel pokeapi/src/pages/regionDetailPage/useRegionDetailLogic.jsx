@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchRegionInfo } from "../../store/items/itemsSlice";
+import { useParams } from "react-router-dom";
 export const useRegionDetailLogic = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.items.regionInfo);
   const status = useSelector((state) => state.items.status);
   const error = useSelector((state) => state.items.error);
+
+  const { region } = useParams();
 
   useEffect(() => {
     console.log("data regions updated", data);
@@ -24,5 +27,6 @@ export const useRegionDetailLogic = () => {
     status,
     error,
     loadRegionItems,
+    region,
   };
 };

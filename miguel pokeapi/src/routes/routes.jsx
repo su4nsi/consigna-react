@@ -4,7 +4,7 @@ import HomePage from "../pages/home/HomePage";
 import Pokemon from "../pages/pokemon/Pokemon";
 import RegionPage from "../pages/region/RegionPage";
 import RegionDetailPage from "../pages/regionDetailPage/RegionDetailPage";
-
+import LocationPage from "../pages/location/LocationPage";
 export const routes = [
   {
     path: "/",
@@ -28,6 +28,9 @@ export const routes = [
     path: "/regions/:region",
     element: <Layout />,
     errorElement: <ErrorPage />,
-    children: [{ path: "", element: <RegionDetailPage /> }],
+    children: [
+      { path: "", element: <RegionDetailPage /> },
+      { path: "/regions/:region/:location", element: <LocationPage /> },
+    ],
   },
 ];
