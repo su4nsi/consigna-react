@@ -1,31 +1,33 @@
 .nav-desktop {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap:250px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
 }
 
 .nav-link-desktop {
-    font-size: 1.5em;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 700;
-    display: inline-block;
-    transition: transform 0.3s ease;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  width: 100%;
 }
 
 .nav-link-desktop:hover {
-    transform: scale(1.25);
+  transform: scale(1.25);
 }
 
 .logo-desktop {
-    width: 300px;
-    height: auto;
+  width: 300px;
+  height: auto;
 }
 
 @media (max-width: 1200px) {
-.nav-desktop {
+  .nav-desktop {
     gap: 125px;
-}
+  }
 }
