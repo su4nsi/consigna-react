@@ -10,7 +10,6 @@ const Pagination = ({ index, setIndex, total }) => {
     handlePage,
     getVisibleIndexes,
     getNumberOfPages,
-    isResponsive,
   } = usePaginationLogic(total);
 
   const visibleIndexes = getVisibleIndexes(index, getNumberOfPages());

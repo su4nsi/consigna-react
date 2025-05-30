@@ -11,8 +11,8 @@ const NavigationDesktop = () => {
 
       <img src={logoImgHeader} className="logo-desktop" alt="Logo" />
 
-      <Link className="nav-link-desktop" to="/categories">
-        Categories
+      <Link className="nav-link-desktop" to="/regions">
+        GeoPokemon
       </Link>
     </nav>
   );

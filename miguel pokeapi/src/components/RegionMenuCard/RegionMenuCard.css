@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+.region-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #c85048;
+  margin: 0.3em;
+  transition: transform 0.5s ease-out;
+  border-radius: 10px;
+  height: 100px;
+  color: black;
+}
+.region-card:hover {
+  background-color: #a8b8c8;
+
+  transform: scale(1.1);
+}
