@@ -18,12 +18,13 @@ const HomePage = () => {
     handleFilterChange,
     isFilterOpen,
     setIsFilterOpen,
+    region,
   } = useHomePageLogic();
 
   useEffect(() => {
     loadItems();
   }, []);
-
+  console.log("region is ", region);
   console.log(isFilterOpen);
   return (
     <div className="pokedex-container">

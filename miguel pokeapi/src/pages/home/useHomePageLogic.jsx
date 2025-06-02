@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {
   fetchItems,
   fetchItemsByType,
@@ -56,6 +57,8 @@ export const useHomePageLogic = () => {
   useEffect(() => {
     if (index !== undefined) localStorage.setItem("index", index);
   }, [index]);
+
+  const { region } = useParams();
 
   const loadItems = () => {
     dispatch(fetchItems());
@@ -114,6 +117,7 @@ export const useHomePageLogic = () => {
     typesPokemon,
     handleFilterChange,
     setIsFilterOpen,
+    region,
     isFilterOpen,
   };
 };

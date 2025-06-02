@@ -31,6 +31,7 @@ export const routes = [
     children: [
       { path: "", element: <RegionDetailPage /> },
       { path: "/regions/:region/locations", element: <LocationPage /> },
+      { path: "/regions/:region/pokedex", element: <HomePage /> },
     ],
   },
 ];
