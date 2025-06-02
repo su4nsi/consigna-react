@@ -29,10 +29,11 @@ const HomePage = () => {
   return (
     <div className="pokedex-container">
       <div className="pokedex-subheader">
-        <h1>Pokedex</h1>
-        <Search onSearch={handleSearch} />
-        <button onClick={() => setIsFilterOpen(true)}>Filter by Type</button>
-
+        <h1>{region ? region + " pokedex" : "pokedex"}</h1>
+        <div className="homepage-buttons">
+          <Search onSearch={handleSearch} />
+          <button onClick={() => setIsFilterOpen(true)}>Filter by Type</button>
+        </div>
         <ModalFilter
           isOpen={isFilterOpen}
           onClose={() => setIsFilterOpen(false)}
