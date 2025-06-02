@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
   fetchItems,
+  fetchItemsSpecific,
   fetchItemsByType,
   clearItems,
 } from "../../store/items/itemsSlice";
@@ -38,6 +39,19 @@ export const useHomePageLogic = () => {
     "unknown",
   ];
 
+  const regionToPokedexId = {
+    kanto: 2,
+    johto: 3,
+    hoenn: 4,
+    sinnoh: 5,
+    unova: 8,
+    kalos: 12,
+    alola: 16,
+    galar: 27,
+    hisui: 29,
+    paldea: 31,
+  };
+
   console.log("index", index);
 
   useEffect(() => {
@@ -60,10 +74,20 @@ export const useHomePageLogic = () => {
 
   const { region } = useParams();
 
+  useEffect(() => {
+    if (region !== undefined) {
+      loadItemsSpecific();
+    } else {
+      loadItems();
+    }
+  }, [region]);
+
   const loadItems = () => {
     dispatch(fetchItems());
   };
-
+  const loadItemsSpecific = () => {
+    dispatch(fetchItemsSpecific(regionToPokedexId[region] ?? 2));
+  };
   const loadItemsByType = (typesFiltered) => {
     dispatch(fetchItemsByType(typesFiltered));
   };
@@ -100,7 +124,8 @@ export const useHomePageLogic = () => {
     if (typesFiltered.length > 0) {
       loadItemsByType(typesFiltered);
     } else {
-      loadItems();
+      if (region !== undefined) loadItemsSpecific();
+      else loadItems();
     }
   };
 

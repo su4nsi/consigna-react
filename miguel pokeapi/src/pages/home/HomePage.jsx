@@ -21,11 +21,7 @@ const HomePage = () => {
     region,
   } = useHomePageLogic();
 
-  useEffect(() => {
-    loadItems();
-  }, []);
-  console.log("region is ", region);
-  console.log(isFilterOpen);
+  console.log("region is ", region, pokedata);
   return (
     <div className="pokedex-container">
       <div className="pokedex-subheader">
