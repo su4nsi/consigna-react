@@ -18,6 +18,25 @@ export async function getAllItems() {
   }
 }
 
+export async function getAllItemsSpecific(generation) {
+  try {
+    const response = await fetch(`${BASE_URL}/pokedex/${generation}`);
+    console.log("fetching specific...");
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch all items from specific pokedex: ${response.statusText}`
+      );
+    }
+    const data = await response.json();
+    const items = data.pokemon_entries.map((entry) => entry.pokemon_species);
+    const paginated = paginateArray(items);
+    return { success: true, data: paginated };
+  } catch (error) {
+    console.error("Error fetching all items from specificpokedex:", error);
+    return { success: false, error: error.message };
+  }
+}
+
 export async function getById(id) {
   try {
     const response = await fetch(`${BASE_URL}pokemon/${id}`);

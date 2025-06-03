@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getAllItems,
+  getAllItemsSpecific,
   getById,
   getPokemonType,
   getRegionInfo,
@@ -10,7 +11,25 @@ export const fetchItems = createAsyncThunk(
   "items/fetchAll",
   async (_, thunkAPI) => {
     try {
+      console.log("general... fetch");
       const response = await getAllItems();
+      if (response.success) {
+        return response.data;
+      } else {
+        return thunkAPI.rejectWithValue(response.error);
+      }
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
+    }
+  }
+);
+
+export const fetchItemsSpecific = createAsyncThunk(
+  "items/fetchAllSpecific",
+  async (generation, thunkAPI) => {
+    try {
+      console.log("specific... fetch");
+      const response = await getAllItemsSpecific(generation);
       if (response.success) {
         return response.data;
       } else {
@@ -98,6 +117,20 @@ export const itemsSlice = createSlice({
         state.pokemons = action.payload;
       })
       .addCase(fetchItems.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+
+      //Fetch all By Specific Pokedex
+      .addCase(fetchItemsSpecific.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(fetchItemsSpecific.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.pokemons = action.payload;
+      })
+      .addCase(fetchItemsSpecific.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       })

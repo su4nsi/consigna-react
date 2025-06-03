@@ -2,19 +2,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchRegionInfo } from "../../store/items/itemsSlice";
 import { useParams } from "react-router-dom";
-export const useRegionDetailLogic = () => {
+export const useLocationPageLogic = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.items.regionInfo);
   const status = useSelector((state) => state.items.status);
   const error = useSelector((state) => state.items.error);
 
   const { region } = useParams();
-  const generation = "add generation API";
+
   useEffect(() => {
-    console.log("data regions updated", data);
+    console.log("data regions locations updated", data);
   }, [data]);
 
-  const loadRegionItems = (id) => {
+  const loadRegionLocationItems = (id) => {
     dispatch(fetchRegionInfo(id));
   };
 
@@ -26,8 +26,7 @@ export const useRegionDetailLogic = () => {
     data,
     status,
     error,
-    loadRegionItems,
+    loadRegionLocationItems,
     region,
-    generation,
   };
 };
