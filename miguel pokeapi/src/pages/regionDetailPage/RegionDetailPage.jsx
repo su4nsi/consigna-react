@@ -42,10 +42,10 @@ const RegionDetailPage = () => {
               </Link>
             </div>
             <button
-              className="link-pokedex"
+              className="link-region"
               onClick={() => navigate(`/regions`)}
             >
-              Back to Regions
+              Back to regions
             </button>
           </div>
         </>

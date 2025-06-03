@@ -11,7 +11,6 @@
 .region-detail-subheader h2 {
   font-family: "Press Start 2P", system-ui;
   color: black;
-
   display: flex;
   justify-content: center;
   margin-top: 1em;
@@ -21,6 +20,7 @@
 .region-detail-subheader h3 {
   font-family: "Press Start 2P", system-ui;
   color: black;
+  text-align: center;
   display: flex;
   justify-content: center;
   margin-top: 0;

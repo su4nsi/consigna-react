@@ -25,6 +25,7 @@
 .pokedex-subheader h1 {
   font-family: "Press Start 2P", system-ui;
   text-align: center;
+  color: black;
 }
 .pokedex-grid {
   display: flex;
@@ -35,6 +36,9 @@
 }
 .link-pokemon {
   display: contents;
+}
+.pokedex-container {
+  margin-bottom: 3em;
 }
 @media (max-width: 600px) {
   .pokedex-subheader {

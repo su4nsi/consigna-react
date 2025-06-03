@@ -5,6 +5,8 @@ import Search from "../../components/search/Search";
 import "./HomePage.css";
 import ModalFilter from "../../components/filter/modalFilter/ModalFilter";
 import PokemonList from "../../components/PokemonList/PokemonList";
+import { useNavigate } from "react-router-dom";
+
 const HomePage = () => {
   const {
     status,
@@ -20,12 +22,13 @@ const HomePage = () => {
     setIsFilterOpen,
     region,
   } = useHomePageLogic();
-
+  const navigate = useNavigate();
   console.log("region is ", region, pokedata);
   return (
     <div className="pokedex-container">
       <div className="pokedex-subheader">
         <h1>{region ? region + " pokedex" : "pokedex"}</h1>
+
         <div className="homepage-buttons">
           <Search onSearch={handleSearch} />
           <button onClick={() => setIsFilterOpen(true)}>Filter by Type</button>
@@ -57,6 +60,14 @@ const HomePage = () => {
               setIndex={setIndex}
               total={pokedata.length}
             />
+            {region && (
+              <button
+                className="link-region"
+                onClick={() => navigate(`/regions`)}
+              >
+                Back to regions
+              </button>
+            )}
           </>
         )}
       </div>
