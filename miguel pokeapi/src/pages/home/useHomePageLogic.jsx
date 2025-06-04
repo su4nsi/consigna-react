@@ -77,8 +77,10 @@ export const useHomePageLogic = () => {
   useEffect(() => {
     if (region !== undefined) {
       loadItemsSpecific();
+      localStorage.setItem("region", region);
     } else {
       loadItems();
+      localStorage.removeItem("region");
     }
   }, [region]);
 

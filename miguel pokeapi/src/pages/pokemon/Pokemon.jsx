@@ -11,6 +11,7 @@ const Pokemon = () => {
     pokemonName,
     pokemonBehind,
     pokemonAfter,
+    region,
   } = usePokemonLogic();
 
   useEffect(() => {
@@ -36,9 +37,18 @@ const Pokemon = () => {
         </div>
         <div className="pokemon-more">
           <div className="buttons">
-            <button className="link-pokedex" onClick={() => navigate(`/`)}>
-              Back
-            </button>
+            {region ? (
+              <button
+                className="link-pokedex"
+                onClick={() => navigate(`/regions/${region}`)}
+              >
+                Back to region
+              </button>
+            ) : (
+              <button className="link-pokedex" onClick={() => navigate(`/`)}>
+                Back
+              </button>
+            )}
             <button
               className="link-pokedex"
               disabled={!pokemonBehind()}

@@ -24,6 +24,7 @@ export const usePokemonLogic = () => {
     }
   }, [dataAll]);
 
+  const region = localStorage.getItem("region");
   const pokemonBehind = () => {
     const flatData = [];
     for (let i = 0; i < dataAll?.length; i++) {
@@ -61,5 +62,6 @@ export const usePokemonLogic = () => {
     pokemonName,
     pokemonBehind,
     pokemonAfter,
+    region,
   };
 };
