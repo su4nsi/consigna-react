@@ -1,0 +1,18 @@
+.error-list-box {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2em;
+  margin: 1em;
+  background-color: #41a1a8;
+  padding: 2em 4em;
+  border-radius: 10px;
+}
+.error-list-box h2 {
+  margin: 0;
+}
+.noresults-list {
+  font-family: "Press Start 2P", system-ui;
+  font-size: 1.2em;
+  text-align: center;
+}

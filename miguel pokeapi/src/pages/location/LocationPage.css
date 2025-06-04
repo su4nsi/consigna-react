@@ -27,6 +27,7 @@
   max-height: 11em;
   overflow-y: auto;
   padding: 0 1em;
+  margin: 0 2em;
   border-radius: 8px;
 }
 .location {
@@ -52,7 +53,12 @@
   cursor: pointer;
   transition: transform 0.2s ease;
 }
-
+.link-region.alt {
+  background-color: #b8a8a8;
+}
+.link-region.alt:hover {
+  background-color: #bd8888;
+}
 .link-region:disabled {
   opacity: 0.4;
   cursor: not-allowed;

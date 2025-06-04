@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom";
 import PokemonCard from "../PokemonCard/PokemonCard";
+import "./PokemonList.css";
+import { useNavigate } from "react-router-dom";
 
-const PokemonList = ({ pokedata, index, loadItems }) => {
+const PokemonList = ({ pokedata, index }) => {
   const currentData = pokedata[index];
+  const navigate = useNavigate();
 
   if (!currentData || currentData.length === 0) {
     return (
-      <div>
-        <p>No results found</p>
+      <div className="error-list-box">
+        <h2 className="noresults-list">No results found</h2>
         <button
+          className="link-region alt"
           onClick={() => {
             localStorage.setItem("query", "");
-            loadItems();
+            navigate(0);
           }}
         >
           Reload

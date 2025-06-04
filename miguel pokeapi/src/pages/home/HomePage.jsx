@@ -31,7 +31,11 @@ const HomePage = () => {
 
         <div className="homepage-buttons">
           <Search onSearch={handleSearch} />
-          <button onClick={() => setIsFilterOpen(true)}>Filter by Type</button>
+          {region === undefined && (
+            <button onClick={() => setIsFilterOpen(true)}>
+              Filter by Type
+            </button>
+          )}
         </div>
         <ModalFilter
           isOpen={isFilterOpen}
