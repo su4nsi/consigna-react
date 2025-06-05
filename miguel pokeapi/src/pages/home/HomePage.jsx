@@ -27,6 +27,14 @@ const HomePage = () => {
   return (
     <div className="pokedex-container">
       <div className="pokedex-subheader">
+        {region && (
+          <button
+            className="link-region pokedex"
+            onClick={() => navigate(`/regions`)}
+          >
+            Back
+          </button>
+        )}
         <h1>{region ? region + " pokedex" : "pokedex"}</h1>
 
         <div className="homepage-buttons">
@@ -64,14 +72,6 @@ const HomePage = () => {
               setIndex={setIndex}
               total={pokedata.length}
             />
-            {region && (
-              <button
-                className="link-region"
-                onClick={() => navigate(`/regions`)}
-              >
-                Back to regions
-              </button>
-            )}
           </>
         )}
       </div>

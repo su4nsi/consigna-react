@@ -1,64 +1,40 @@
-# 🛠 Proyecto Final - Capacitación React
+# Pokemigapi
 
-## ⚠️ IMPORTANTE: PROHIBIDO USAR ChatGPT u otras IAs
+Pokemigapi is a fully responsive web that uses the pokeapi to display Pokemon data.
 
-El objetivo principal de esta capacitación es **aprender a pensar como desarrolladores**: buscar documentación, leer, equivocarse y resolver problemas por cuenta propia. Las IAs como ChatGPT son útiles, pero como desarrolladores *trainee*, es fundamental desarrollar habilidades sólidas en la lectura de documentación y búsqueda en foros técnicos.
+## Description and functionalities
 
----
+The application is divided in the main sections:
 
-## 🎯 Objetivo General
+### Pokedex
 
-Aplicar los conocimientos aprendidos en la capacitación de React para desarrollar una aplicación web desde cero utilizando una API pública. Se trabajará con herramientas modernas del ecosistema React (Vite, componentes, hooks, rutas, llamadas a APIs, etc.), siguiendo buenas prácticas y estructuras profesionales.
+- Displays a list of Pokemon with pagination for easy navigation.
+- Clicking on a Pokemon that is in the list reveals additional information.
+- Includes a search bar to find Pokémon by name.
+- Allows filtering Pokémon by type.
 
----
+### Regions
 
-## 🧪 Desafío
+- Lists all Pokemon regions.
+- Users can click on a region to:
+  - View all its locations.
+  - See the Pokémon available in that region (reusing pokedex page)
 
-Crear una aplicación que consuma una API pública. Recomendamos:
+## Important Details
 
-- [PokeAPI](https://pokeapi.co/)
-- [Rick and Morty API](https://rickandmortyapi.com/)
+- This project has all the challenges from the original README ([basic and extra ](https://github.com/JuanGidoni/consigna-react?tab=readme-ov-file#-requisitos-m%C3%ADnimos-funcionales)), except for the dark mode feature.
+- The project was developed following real practices such as conventional commits, separation of logic and UI, reusable components, Redux implementation, and fully responsive design.
 
----
+## How to run
 
-## ✅ Requisitos mínimos funcionales
+If you want to run this project locally instead of just visiting it online, follow these steps:
 
-- Crear un proyecto con **Vite + React**
-- Implementar **ruteo** con `react-router-dom`
-- Consumir datos desde la API usando **fetch** y **axios** (mínimo una vez cada uno)
-- Mostrar una lista de al menos **20 elementos**, con **paginación**
-- Implementar **filtros** (ej: por nombre, especie, estado, tipo, etc.)
-- Mostrar una **vista de detalles** al hacer clic en un elemento
-- Utilizar **async/await** en las llamadas a la API
-- Separar la **lógica** de la **UI** y usar componentes **reutilizables**
-- Escribir código limpio, estructurado y con buenas prácticas
+- Clone this repository
 
----
+- Navigate to the miguel pokeapi folder
 
-## 🚀 Desafíos opcionales (para destacarse)
+- Install dependencies with "npm install"
 
-> Estos ítems no son obligatorios, pero recomendamos realizarlos si quieren sumar puntos y experiencia.
+- Start it with "npm run dev"
 
-- 🧠 **Manejo de estado global** con Context API o Redux Toolkit
-- 💾 **Persistencia de datos** en `localStorage` o `sessionStorage`
-- 🎨 **Dark Mode** o cambio de tema
-- 🔍 **Buscador dinámico** con input controlado
-- 📱 **Diseño responsive**
-
----
-
-## 📦 Entrega
-
-- Subir el proyecto a un **repositorio público en GitHub**
-- Incluir un archivo `README.md` con:
-  - Descripción del proyecto
-  - Pasos para ejecutar la aplicación
-  - Funcionalidades implementadas
-  - Detalles adicionales o desafíos opcionales realizados
-  - Si algo no fue implementado, explicar por qué
-
----
-
-## 🧠 Consejo final
-
-Este proyecto es una simulación de un caso real. Lo importante no es que sea perfecto, sino demostrar tu progreso, esfuerzo y cómo aplicás lo aprendido. Si algo no sabés cómo hacerlo: **buscá, leé, probá, equivocáte, corregí y aprendé.**
+- Open the app in your browser
