@@ -3,7 +3,7 @@ import NavigationDesktop from "../navigation/desktop/NavigationDesktop";
 import NavigationResponsive from "../navigation/mobile/NavigationMobile";
 import useHeaderLogic from "./useHeaderLogic";
 
-export function Header() {
+function Header() {
   const { isMobile } = useHeaderLogic();
   return (
     <header className="main-header">
