@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useHeaderLogic = () => {
+const useHeaderLogic = () => {
   const [isMobile, setisMobile] = useState(window.innerWidth <= 1024);
 
   useEffect(() => {
@@ -19,3 +19,5 @@ export const useHeaderLogic = () => {
     isMobile,
   };
 };
+
+export default useHeaderLogic;
