@@ -1,7 +1,7 @@
 import "./Header.css";
 import NavigationDesktop from "../navigation/desktop/NavigationDesktop";
 import NavigationResponsive from "../navigation/mobile/NavigationMobile";
-import { useHeaderLogic } from "./UseHeaderLogic";
+import { useHeaderLogic } from "./useHeaderLogic";
 
 export function Header() {
   const { isMobile } = useHeaderLogic();

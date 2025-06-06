@@ -1,4 +1,4 @@
-import "./modalFilter.css";
+import "./ModalFilter.css";
 import Filter from "../Filter";
 const ModalFilter = ({ isOpen, onClose, typesPokemon, onFilterChange }) => {
   if (!isOpen) return null;
