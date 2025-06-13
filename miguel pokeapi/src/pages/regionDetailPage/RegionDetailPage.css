@@ -1,3 +1,10 @@
+.info-container {
+  margin: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .region-detail-container h2 {
   font-family: "Press Start 2P", system-ui;
 }
