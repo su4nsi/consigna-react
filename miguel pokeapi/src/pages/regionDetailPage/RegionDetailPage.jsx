@@ -16,9 +16,15 @@ const RegionDetailPage = () => {
   return (
     <div className="region-detail-container">
       {status === "loading" ? (
-        <p>Loading...</p>
+        <>
+          <div className="info-container">
+            <p>Loading...</p>
+          </div>
+        </>
       ) : status === "failed" ? (
-        <p>Error: {error}</p>
+        <div className="info-container">
+          <p>Error: {error}</p>
+        </div>
       ) : (
         <>
           <div className="region-detail-subheader">

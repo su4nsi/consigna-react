@@ -21,9 +21,24 @@ const Pokemon = () => {
   const navigate = useNavigate();
 
   if (status === "loading") {
-    return <p>Loading...</p>;
+    return (
+      <>
+        <div className="info-container">
+          <p>Loading...</p>
+        </div>
+      </>
+    );
   }
-  if (status === "failed") return <p>Error: {error}</p>;
+  if (status === "failed") {
+    return (
+      <>
+        <div className="info-container">
+          <p>Error: {error}</p>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <div className="pokemon-container">
